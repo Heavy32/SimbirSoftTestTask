@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePresentation", "Simb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{BA9B6D74-6C77-4D6D-9197-89C6FA483484}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseProvider", "DataBaseProvider\DataBaseProvider.csproj", "{7EF26091-0EF0-41EE-A0C6-83EDC362B621}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA9B6D74-6C77-4D6D-9197-89C6FA483484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA9B6D74-6C77-4D6D-9197-89C6FA483484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA9B6D74-6C77-4D6D-9197-89C6FA483484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EF26091-0EF0-41EE-A0C6-83EDC362B621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EF26091-0EF0-41EE-A0C6-83EDC362B621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EF26091-0EF0-41EE-A0C6-83EDC362B621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EF26091-0EF0-41EE-A0C6-83EDC362B621}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

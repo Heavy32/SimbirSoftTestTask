@@ -1,44 +1,29 @@
 ﻿using System.IO;
 using System;
+using HtmlAgilityPack;
 
 namespace Services
 {
     public class HtmlPageDownloader : IHtmlPageDownloader
     {
-        private readonly string path;
-        private readonly HtmlPageToStringConverter converter;
+        private readonly HtmlDocument webPage;
 
-        public HtmlPageDownloader(string path, HtmlPageToStringConverter converter)
+        public HtmlPageDownloader(HtmlDocument webPage)
         {
-            if (string.IsNullOrEmpty(path))
+            if (webPage == null)
             {
-                string message = "path is empty";
+                string message = "web page is empty";
                 LoggerSingleton.instance.Value.WriteInLog(message);
                 throw new ArgumentNullException(message);
             }
-
-            if (converter == null)
-            {
-                string message = "converter is null";
-                LoggerSingleton.instance.Value.WriteInLog(message);
-                throw new ArgumentNullException(message);
-            }
-
-            this.path = path;
-            this.converter = converter;
+            this.webPage = webPage;
         }
 
-        public void Download(string url)
+        public void Download(string path)
         {
-            if (string.IsNullOrEmpty(url))
-            {
-                LoggerSingleton.instance.Value.WriteInLog("url is empty");
-                return;
-            }
-
             try
             {
-                File.WriteAllText(path, converter.Convert(url));
+                File.WriteAllText(path, webPage.Text);
             }
             catch (Exception ex)
             {

@@ -7,45 +7,28 @@ namespace Services
 {
     public class HtmlPageToStringConverter : IHtmlPageToStringConverter
     {
-        private readonly HtmlWeb webProdiver;
+        private readonly HtmlDocument webPage;
 
-        public HtmlPageToStringConverter(HtmlWeb webProdiver)
+        public HtmlPageToStringConverter(HtmlDocument webPage)
         {
-            if(webProdiver == null)
+            if(webPage == null)
             {
                 string message = "web provider is null";
                 LoggerSingleton.instance.Value.WriteInLog(message);
                 throw new ArgumentNullException(message);
             }
 
-            this.webProdiver = webProdiver;
+            this.webPage = webPage;
         }
 
-        public string Convert(string url)
+        public string Convert()
         {
-            if (string.IsNullOrEmpty(url))
-            {
-                LoggerSingleton.instance.Value.WriteInLog("url is null");
-                return null;
-            }
-            HtmlDocument document;
-
-            try
-            {
-                document = webProdiver.Load(url);
-            }
-            catch (Exception ex)
-            {
-                LoggerSingleton.instance.Value.WriteInLog(ex.Message);
-                return null;
-            }
-
-            document.DocumentNode.Descendants()
+            webPage.DocumentNode.Descendants()
                 .Where(n => n.Name == "script" || n.Name == "style")
                 .ToList()
                 .ForEach(n => n.Remove());
 
-            HtmlNode root = document.DocumentNode;
+            HtmlNode root = webPage.DocumentNode;
             var sb = new StringBuilder();
             foreach (var node in root.DescendantsAndSelf())
             {

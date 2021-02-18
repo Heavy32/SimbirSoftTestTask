@@ -2,6 +2,6 @@
 {
     public interface IHtmlPageDownloader
     {
-        public void Download(string url);
+        public void Download(string path);
     }
 }
